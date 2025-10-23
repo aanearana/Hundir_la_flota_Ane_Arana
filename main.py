@@ -1,44 +1,60 @@
 import numpy as np
-#Importar funciones
-from utils import tablero
-from utils import colocar_barcos_aleatorios
-from utils import disparar
+import random
+from utils import tablero, colocar_barcos_aleatorios, disparar
 
-#Turnos
-def turnos():
-    while contador < total_turnos:
-        player_1 = input("Nombre del Player 01: ")
-        player_2 = input("Nombre del Player 02: ")
-        turno_actual = random.choice([player_1, player_2])
-        contador = 0
-        total_turnos = 10
-        #Imprimo aqui de quien es el turno porque si no se me imprime 10 veces
-        print(f"Turno de {turno_actual}")
-
-        # Cambiar de turno
-        if turno_actual == player_1:
-            turno_actual = player_1
-        else:
-            turno_actual = player_2
-            
-        contador += 1
+# Pedir nombres
+player_1 = input("Nombre del Player 01: ")
+player_2 = input("Nombre del Player 02: ")
 
 
+# Elegir de manera aleatoria entre los dos nombres
+turno_actual = random.choice([player_1, player_2])
+
+# Crear tableros vacíos para ambos jugadores
+tablero_1 = tablero()
+tablero_2 = tablero()
+
+# Colocar barcos en ambos tableros
+print(f"\n{player_1}, coloca tus barcos:")
+num_barcos = int(input("¿Cuántos barcos quieres colocar? "))
+eslora = int(input("¿Qué tamaño tendrán tus barcos? "))
+tablero_1 = colocar_barcos_aleatorios(tablero_1, num_barcos, eslora)
+
+print(f"\n{player_2}, coloca tus barcos:")
+num_barcos = int(input("¿Cuántos barcos quieres colocar? "))
+eslora = int(input("¿Qué tamaño tendrán tus barcos? "))
+tablero_2 = colocar_barcos_aleatorios(tablero_2, num_barcos, eslora)
+
+# Decidir quién empieza
+turno_actual = random.choice([player_1, player_2])
+print(f"\nEmpieza {turno_actual}!")
+
+# Iniciar el juego
+juego_activo = True
+while juego_activo:
+    print(f"\nTurno de {turno_actual}")
     
-    numero_barcos = input("¿Cuantos barcos deseas pintar?")
-    numero_barcos = int(numero_barcos)
-
-    eslora = input("¿Cuantas casillas ocupa el barco que deseas pintar?")
-    eslora = int(eslora)
-
-    t_barcos = colocar_barcos_aleatorios(t, numero_barcos, eslora)
-    print(t_barcos)
-
-    disparar()
-
-
-
-#CABE NO CABE
-#TURNOS con while == True hasta que uno haya pisado todos los varcos == FALSE se acaba
-
-
+    # Seleccionar tablero del oponente
+    if turno_actual == player_1:
+        oponente = tablero_2
+    else:
+        oponente = tablero_1
+    
+    # Mostrar un tablero oculto (solo agua y disparos, sin barcos)
+    tablero_visible = np.where(oponente == "🚢", "🌊", oponente)
+    print(tablero_visible)
+    
+    # Pedir coordenadas del disparo
+    fila = int(input("Fila a disparar (0-9): "))
+    columna = int(input("Columna a disparar (0-9): "))
+    
+    # Disparar
+    oponente = disparar(oponente, fila, columna)
+    
+    # Comprobar si quedan barcos
+    if "🚢" not in oponente:
+        print(f"\n¡{turno_actual} ha ganado! 🚢💥")
+        juego_activo = False
+    else:
+        # Cambiar de turno
+        turno_actual = player_2 if turno_actual == player_1 else player_1

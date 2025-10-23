@@ -2,41 +2,6 @@
 import numpy as np
 import random
 
-#Personalizar jugadores
-player_1 = input("Nombre del Player 01: ")
-player_2 = input("Nombre del Player 02: ")
-
-# Elegir de manera aleatoria entre los dos nombres
-turno_actual = random.choice([player_1, player_2])
-
-contador = 0
-total_turnos = 10
-#Turnos
-while contador < total_turnos:
-    #Imprimo aqui de quien es el turno porque si no se me imprime 10 veces
-    print(f"Turno de {turno_actual}")
-     # Cambiar de turno
-    if turno_actual == player_1:
-        turno_actual = player_1
-    else:
-        turno_actual = player_2
-    def tablero():
-        "No necesita parametros, tiene predeterminado 10x10"
-        tablero = np.full((10,10), "🌊")
-        return tablero
-    
-    print(tablero)
-    numero_barcos = input("¿Cuantos barcos deseas pintar?")
-    numero_barcos = int(numero_barcos)
-
-    eslora = input("¿Cuantas casillas ocupa el barco que deseas pintar?")
-    eslora = int(eslora)
-    def colocar_barcos_aleatorios(tablero, numero_barcos, eslora):
-        return tablero
-
-        
-    contador += 1
-
 #Pintar el tablero
 def tablero():
     "No necesita parametros, tiene predeterminado 10x10"
@@ -127,13 +92,13 @@ def disparar(tablero, fila, columna):
         return tablero
     #Si es agua
     elif tablero[fila, columna] == "🌊":
-        tablero[fila, columna] = "💦"
+        tablero[fila, columna] = "🔴"
         intentos += 1
         print(f"Agua. Has realizado {intentos} intentos.")
         return tablero
     #Si ya ha tocado
-    elif tablero[fila, columna] == "💦":
-        tablero[fila, columna] = "💦"
+    elif tablero[fila, columna] == "🔴":
+        tablero[fila, columna] = "🔴"
         intentos += 1
         print(f"Ya has elegido esta fila y columna anteriormente. Has realizado {intentos} intentos.")
         return tablero
