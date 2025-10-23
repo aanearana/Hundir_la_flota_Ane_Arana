@@ -92,25 +92,25 @@ def disparar(tablero, fila, columna):
     elif tablero[fila, columna] == "🚢":
         tablero[fila, columna] = "💀"
         intentos += 1
-        print(f"¡Tocado! Has realizado {intentos} intentos.")
+        print(f"¡Tocado!")
         return tablero
     #Si es agua
     elif tablero[fila, columna] == "🌊":
         tablero[fila, columna] = "🔴"
         intentos += 1
-        print(f"Agua. Has realizado {intentos} intentos.")
+        print(f"¡Agua!")
         return tablero
     #Si ya ha tocado
     elif tablero[fila, columna] == "🔴":
         tablero[fila, columna] = "🔴"
         intentos += 1
-        print(f"Ya has elegido esta fila y columna anteriormente. Has realizado {intentos} intentos.")
+        print(f"Ya has elegido esta fila y columna anteriormente.")
         return tablero
     #Si ya ha matado
     elif tablero[fila, columna] == "💀":
         tablero[fila, columna] = "💀"
         intentos += 1
-        print(f"Ya has elegido esta fila y columna anteriormente. Has realizado {intentos} intentos.")
+        print(f"Ya has elegido esta fila y columna anteriormente.")
         return tablero
     else:
         print("Error")
