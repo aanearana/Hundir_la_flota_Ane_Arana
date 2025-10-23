@@ -84,34 +84,29 @@ def disparar(tablero, fila, columna):
     fila = Indica la fila que queremos disparar
     columna = Indica la posicion de la columna a la que queremos disparar
     '''
-    intentos = 0
     #Si es barco
-    if fila > 10 or columna > 10:
-        print("El valor no es valido")
+    if fila >= 9 or columna >= 9:
+        print("El valor no es valido.")
         return tablero
     elif tablero[fila, columna] == "🚢":
         tablero[fila, columna] = "💀"
-        intentos += 1
-        print(f"¡Tocado!")
+        print("¡Tocado!")
         return tablero
     #Si es agua
     elif tablero[fila, columna] == "🌊":
         tablero[fila, columna] = "🔴"
-        intentos += 1
-        print(f"¡Agua!")
+        print("¡Agua!")
         return tablero
     #Si ya ha tocado
     elif tablero[fila, columna] == "🔴":
         tablero[fila, columna] = "🔴"
-        intentos += 1
-        print(f"Ya has elegido esta fila y columna anteriormente.")
+        print("Ya has elegido esta fila y columna anteriormente.")
         return tablero
     #Si ya ha matado
     elif tablero[fila, columna] == "💀":
         tablero[fila, columna] = "💀"
-        intentos += 1
-        print(f"Ya has elegido esta fila y columna anteriormente.")
+        print("Ya has elegido esta fila y columna anteriormente.")
         return tablero
     else:
-        print("Error")
+        print("Error.")
         return tablero

@@ -48,18 +48,20 @@ while juego_activo:
     #Para quitarle a las filas las comillas simples y los corchetes
     for fila in tablero_visible:
         print( " ".join(fila))
-
+    
+    #Comprobar la respuesta de las preguntas
+    try:
+        fila = int(input("¿A que fila del 0 al 9 quieres disparar?"))
+        columna = int(input("¿A que columna del 0 al 9 quieres disparar? "))
+    except ValueError:
+        print("Has introducido un carácter no válido. Usa solo números.")
+        continue
 
     #Para ver el tablero con los barcos
     #________________________
     #print(f"\n, Tablero Player 01 \n,{tablero_1},\n, Tablero Player 02 \n, {tablero_2} ")
     #________________________
 
-
-    #Pedir coordenadas del disparo al jugador
-    fila = int(input("¿A que fila del 0 al 9 quieres disparar?"))
-    columna = int(input("¿A que columna del 0 al 9 quieres disparar? "))
-    
     #Disparar al tablero para eso cogemos de referencia la variable en la que oponente es == a: "🚢", "🌊", oponente
     oponente = disparar(oponente, fila, columna)
     
