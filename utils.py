@@ -20,14 +20,15 @@ def colocar_barcos_aleatorios(tablero, numero_barcos, eslora):
         #Para que el valor que nos de el jugador sea un valor entero
         numero_barcos = int(numero_barcos)
         eslora = int(eslora)
-    #Si nos da error
+    #Si los valores que nos da el jugador no son compatibles con mi funcion da error (float, str...)
     except ValueError:
         return "Error!"
 
+    #Iniciamos contando del punto 0,0
     tamaño = tablero.shape[0]
+
     #Iniciamos el contador de barcos a 0
     barcos_colocados = 0
-
     
     while barcos_colocados < numero_barcos:
         colocado = False
@@ -62,7 +63,7 @@ def colocar_barcos_aleatorios(tablero, numero_barcos, eslora):
             casillas_libres = True 
 
             for x, y in coordenadas_barco:
-            #Si la casilla ya esta ocpupada, es decir ya hay un 🚢
+            #Si la casilla ya esta ocpupada, es decir ya hay un barco
                 if tablero[x, y] == "🚢":  
                     casillas_libres = False
                     break
@@ -85,7 +86,10 @@ def disparar(tablero, fila, columna):
     '''
     intentos = 0
     #Si es barco
-    if tablero[fila, columna] == "🚢":
+    if fila > 10 or columna > 10:
+        print("El valor no es valido")
+        return tablero
+    elif tablero[fila, columna] == "🚢":
         tablero[fila, columna] = "💀"
         intentos += 1
         print(f"¡Tocado! Has realizado {intentos} intentos.")
@@ -111,7 +115,3 @@ def disparar(tablero, fila, columna):
     else:
         print("Error")
         return tablero
-
-
-#CABE NO CABE
-#TURNOS con while == True hasta que uno haya pisado todos los varcos == FALSE se acaba

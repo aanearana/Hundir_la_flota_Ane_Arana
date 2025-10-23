@@ -6,7 +6,6 @@ from utils import tablero, colocar_barcos_aleatorios, disparar
 player_1 = input("Nombre del Player 01: ")
 player_2 = input("Nombre del Player 02: ")
 
-
 # Elegir de manera aleatoria entre los dos nombres
 turno_actual = random.choice([player_1, player_2])
 
@@ -29,32 +28,49 @@ tablero_2 = colocar_barcos_aleatorios(tablero_2, num_barcos, eslora)
 turno_actual = random.choice([player_1, player_2])
 print(f"\nEmpieza {turno_actual}!")
 
-# Iniciar el juego
+#Para iniciar el juego
 juego_activo = True
+
+#Bucle para los turnos.
 while juego_activo:
+    #Como el turno es aleatorio, comienza nombrando al primer jugador (Player 01 o Player 02)
     print(f"\nTurno de {turno_actual}")
     
-    # Seleccionar tablero del oponente
+    #Si comienza el Player 01 dispara y ve el tablero del Player 02 (oponente)
     if turno_actual == player_1:
         oponente = tablero_2
+    #Si es el turno Player 02 el tablero que dispara y el que muestra es el de Player 01
     else:
         oponente = tablero_1
     
     # Mostrar un tablero oculto (solo agua y disparos, sin barcos)
     tablero_visible = np.where(oponente == "🚢", "🌊", oponente)
-    print(tablero_visible)
+    #Para quitarle a las filas las comillas simples y los corchetes
+    for fila in tablero_visible:
+        print( " ".join(fila))
+
+
+    #Para ver el tablero con los barcos
+    #________________________
+    #print(f"\n, Tablero Player 01 \n,{tablero_1},\n, Tablero Player 02 \n, {tablero_2} ")
+    #________________________
+
+
+    #Pedir coordenadas del disparo al jugador
+    fila = int(input("¿A que fila del 0 al 9 quieres disparar?"))
+    columna = int(input("¿A que columna del 0 al 9 quieres disparar? "))
     
-    # Pedir coordenadas del disparo
-    fila = int(input("Fila a disparar (0-9): "))
-    columna = int(input("Columna a disparar (0-9): "))
-    
-    # Disparar
+    #Disparar al tablero para eso cogemos de referencia la variable en la que oponente es == a: "🚢", "🌊", oponente
     oponente = disparar(oponente, fila, columna)
     
-    # Comprobar si quedan barcos
+    #Comprobar si quedan barcos, cuando no queden barcos en el tablero del oponente se muestra el jugador que ha ganado
     if "🚢" not in oponente:
-        print(f"\n¡{turno_actual} ha ganado! 🚢💥")
+        print(f"\n¡{turno_actual} ha ganado!")
         juego_activo = False
     else:
-        # Cambiar de turno
-        turno_actual = player_2 if turno_actual == player_1 else player_1
+        # Cambiamos de jugador para el siguiente turno
+        if turno_actual == player_1:
+            turno_actual = player_2
+        else:
+            turno_actual = player_1
+
