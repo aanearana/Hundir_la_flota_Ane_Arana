@@ -18,21 +18,21 @@ El proyecto tiene dos archivos principales:
 
 2. Responde las preguntas:
 
-2. 1. Nombre del Player
-2. 2. ¿Cuántos barcos quieres colocar? 
-2. 3. ¿Qué tamaño tendrán tus barcos?
-2. 4. Elige la fila a disparar (0-9)
-2. 5. Columna a disparar (0-9)
+- Nombre del Player
+- ¿Cuántos barcos quieres colocar? 
+- ¿Qué tamaño tendrán tus barcos?
+- Elige la fila a disparar (0-9)
+- Columna a disparar (0-9)
 
 3. En cada turno:
 
-3. 1. El jugador elegirá una fila y una columna para disparar (valores del 0 al 9).
+- El jugador elegirá una fila y una columna para disparar (valores del 0 al 9).
 
-3. 2. Si acierta un barco, se marcará con 💀.
+- Si acierta un barco, se marcará con 💀.
 
-3. 3. Si falla, se marcará con 🔴.
+- Si falla, se marcará con 🔴.
 
-3. 4. El juego termina cuando uno de los jugadores hunde todos los barcos del oponente.
+- El juego termina cuando uno de los jugadores hunde todos los barcos del oponente.
 
 ## Símbolos del tablero
 ### Símbolo	Significado
