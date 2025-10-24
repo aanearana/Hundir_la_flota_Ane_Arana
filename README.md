@@ -4,7 +4,7 @@ Un pequeño juego de Hundir la Flota (Battleship) hecho en Python, pensado para 
 
 Está programado de manera simple y clara para que cualquier principiante pueda entender cómo funciona.
 
-# # Estructura del proyecto
+## Estructura del proyecto
 
 El proyecto tiene dos archivos principales:
 
@@ -12,7 +12,7 @@ El proyecto tiene dos archivos principales:
 
 2. utils.py → contiene las funciones necesarias para crear el tablero, colocar los barcos y realizar los disparos.
 
-# #Cómo jugar
+## #Cómo jugar
 
 1. Ejecuta el archivo main.py en la terminal mendiante: python main.py
 
