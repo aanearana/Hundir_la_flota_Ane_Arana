@@ -12,7 +12,7 @@ El proyecto tiene dos archivos principales:
 
 2. utils.py → contiene las funciones necesarias para crear el tablero, colocar los barcos y realizar los disparos.
 
-## #Cómo jugar
+## Cómo jugar
 
 1. Ejecuta el archivo main.py en la terminal mendiante: python main.py
 
